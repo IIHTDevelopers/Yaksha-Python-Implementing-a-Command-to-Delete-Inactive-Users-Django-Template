@@ -1,0 +1,7 @@
+{% for post in posts %}
+<h2><a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a></h2>
+<p>{{ post.content|truncatewords:30 }}</p>
+{% if user.is_staff %}
+<a href="{% url 'blog_edit' post.id %}">Edit</a> |
+<a href="{% url 'blog_delete' post.id %}">Delete</a>
+{% endif %} {% endfor %}
